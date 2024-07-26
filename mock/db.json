@@ -1,0 +1,23 @@
+{
+  "pessoas": [
+    {
+      "id": "1",
+      "nomeCompleto": "Carlos da Silva",
+      "cidadeId": "1",
+      "emial": "carlos@gmail.com"
+    },
+    {
+      "id": "1",
+      "nomeCompleto": "Carlos da Silva",
+      "cidadeId": "5",
+      "emial": "carlos@gmail.com"
+    }
+  ],
+  "cidades": [
+    { "id": "1", "nome": "Campinas" },
+    { "id": "1", "nome": "Vinhedo" }
+  ],
+  "auth": {
+    "accessToken": "277090"
+  }
+}
