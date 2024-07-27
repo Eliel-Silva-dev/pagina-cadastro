@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
 import { useField } from '@unform/core';
 
-type TVTextFieldProps = TextFieldProps & {
+type TVSelectProps = TextFieldProps & {
   name: string;
 };
 
-export const VTextField: React.FC<TVTextFieldProps> = ({ name, ...rest}: TVTextFieldProps) => {
+export const VSelec: React.FC<TVSelectProps> = ({ name, ...rest }: TVSelectProps) => {
   const { fieldName, defaultValue, registerField, error, clearError } =
     useField(name);
 
@@ -23,6 +23,7 @@ export const VTextField: React.FC<TVTextFieldProps> = ({ name, ...rest}: TVTextF
   return (
     <TextField
       {...rest}
+      select
       defaultValue={defaultValue}
       value={value || ''}
       error={!!error}

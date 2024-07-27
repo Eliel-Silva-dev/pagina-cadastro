@@ -6,7 +6,10 @@ type TVSwitchProps = SwitchProps & {
   name: string;
 };
 
-export const VSwitch: React.FC<TVSwitchProps> = ({ name, ...rest }) => {
+export const VSwitch: React.FC<TVSwitchProps> = ({
+  name,
+  ...rest
+}: TVSwitchProps) => {
   const { fieldName, defaultValue, registerField, error, clearError } =
     useField(name);
 
