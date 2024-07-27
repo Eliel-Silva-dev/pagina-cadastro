@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { TextField, TextFieldProps } from '@mui/material';
-import { PatternFormatProps, PatternFormat } from 'react-number-format';
+import { NumericFormat, NumericFormatProps } from 'react-number-format';
 import { useField } from '@unform/core';
 
-type TVTextFieldProps = Omit<PatternFormatProps, 'value'> &
+type TVTextFieldProps = Omit<NumericFormatProps, 'value'> &
   Omit<TextFieldProps, 'value'> & {
     name: string;
     onValueChange?: (value: string) => void;
@@ -16,7 +16,7 @@ type TVTextFieldProps = Omit<PatternFormatProps, 'value'> &
  * Para como customizar a formatação verifique a documentação original do `react-number-format` [nesse link](https://www.npmjs.com/package/react-number-format) ou [nesse link](https://s-yadav.github.io/react-number-format/docs/intro/)
  */
 
-export const VPatternFormat: React.FC<TVTextFieldProps> = ({
+export const VNumericFormat: React.FC<TVTextFieldProps> = ({
   name,
   onValueChange,
   ...rest
@@ -38,7 +38,7 @@ export const VPatternFormat: React.FC<TVTextFieldProps> = ({
   };
 
   return (
-    <PatternFormat
+    <NumericFormat
       {...rest}
       customInput={TextField}
       value={value}
