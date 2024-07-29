@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { responseInterceptor, errorInterceptor } from './interceptors';
-import { Environment } from '@/environment';
+import { Environment } from '@/shared/environment';
 
 const Api = axios.create({
   baseURL: Environment.URL_BASE,

@@ -18,11 +18,11 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   IListagemCidade,
   CidadesService,
-} from '@/services/api/cidades/CidadesService';
-import { FerramentasDaListagem } from '@/components';
-import { LayoutBaseDePagina } from '@/layout';
-import { Environment } from '@/environment';
-import { useDebounce } from '@/hooks';
+} from '@/shared/services/api/cidades/CidadesService';
+import { FerramentasDaListagem } from '@/shared/components';
+import { LayoutBaseDePagina } from '@/shared/layout';
+import { Environment } from '@/shared/environment';
+import { useDebounce } from '@/shared/hooks';
 
 export const ListagemDeCidades: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();

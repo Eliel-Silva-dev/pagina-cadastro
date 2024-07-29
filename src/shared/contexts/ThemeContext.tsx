@@ -6,7 +6,7 @@ import {
   useState,
 } from 'react';
 
-import { DarkTheme, LightTheme } from '@/theme';
+import { DarkTheme, LightTheme } from '@/shared/theme';
 
 import { ThemeProvider } from '@mui/material';
 
@@ -28,8 +28,8 @@ interface IAppThemeProviderProps {
 }
 
 export const AppThmeProvider: React.FC<IAppThemeProviderProps> = ({
-  children,
-}) => {
+  children
+}:IAppThemeProviderProps) => {
   const [themeName, setThemeName] = useState<'light' | 'dark'>('light');
 
   const toggleTheme = useCallback(() => {

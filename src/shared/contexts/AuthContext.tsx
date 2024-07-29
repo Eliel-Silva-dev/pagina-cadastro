@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react';
 
-import { AuthService } from '@/services/api/auth/AuthService';
+import { AuthService } from '@/shared/services/api/auth/AuthService';
 
 interface IAuthContextData {
   logout: () => void;

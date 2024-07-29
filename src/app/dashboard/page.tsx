@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 
-import * as CidadesService from '@/services/api/cidades/CidadesService';
-import * as PessoasService from '@/services/api/pessoas/PessoasService';
-import { FerramentasDaListagem } from '@/components';
-import { LayoutBaseDePagina } from '@/layout';
+import * as CidadesService from '@/shared/services/api/cidades/CidadesService';
+import * as PessoasService from '@/shared/services/api/pessoas/PessoasService';
+import { FerramentasDaListagem } from '@/shared/components';
+import { LayoutBaseDePagina } from '@/shared/layout';
 
 const Dashboard = () => {
   const [isLoadingCidades, setIsLoadingCidades] = useState(true);
