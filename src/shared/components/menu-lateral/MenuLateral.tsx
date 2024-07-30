@@ -18,7 +18,7 @@ import {
   useAppThemeContext,
   useDrawerContext,
   useAuthContext,
-} from '@/contexts';
+} from '@/shared/contexts';
 
 //import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 
