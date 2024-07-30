@@ -13,7 +13,7 @@ import {
 
 import * as yup from 'yup';
 
-import { useAuthContext } from '@/contexts';
+import { useAuthContext } from '@/shared/contexts';
 
 const loginSchema = yup.object().shape({
   email: yup.string().email().required(),
@@ -128,7 +128,7 @@ export const Login: React.FC<ILoginProps> = ({ children }: ILoginProps) => {
             </Typography>
             <Typography variant="body1" align="center">
               Desculpe o transtorno, o BackEnd da aplicação esta em manutenção.
-              Não será possivel acessa-la nesse momento.
+              Não será possível acessa-la nesse momento.
             </Typography>
             <Typography variant="body1" align="center">
               Favor acessar o{' '}

@@ -27,7 +27,7 @@ interface IAppThemeProviderProps {
   children: React.ReactNode;
 }
 
-export const AppThmeProvider: React.FC<IAppThemeProviderProps> = ({
+export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({
   children
 }:IAppThemeProviderProps) => {
   const [themeName, setThemeName] = useState<'light' | 'dark'>('light');
