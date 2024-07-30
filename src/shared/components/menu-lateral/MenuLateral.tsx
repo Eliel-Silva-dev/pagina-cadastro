@@ -10,9 +10,9 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-//listClasses
+//listClasses pra que serve?
 
-import { Box } from '@mui/system';
+import { Box } from '@mui/system'; // é tipo uma div
 
 import {
   useAppThemeContext,
@@ -21,6 +21,7 @@ import {
 } from '@/shared/contexts';
 
 //import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
+// qual o equivalente do router no next?
 
 interface IListItemLinkProps {
   to: string;
@@ -61,8 +62,8 @@ interface IMenuLateralProps {
 export const MenuLateral: React.FC<IMenuLateralProps> = ({
   children,
 }: IMenuLateralProps) => {
-  const theme = useTheme();
-  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const theme = useTheme(); //trás todos os dados relacionados ao tema em exclusão.
+  const smDown = useMediaQuery(theme.breakpoints.down('sm')); // se a largura for menor q sm(600px) retorna true
 
   const { isDrawerOpen, drawerOptions, toggleDrawerOpen } = useDrawerContext();
   const { toggleTheme } = useAppThemeContext();
@@ -73,24 +74,31 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
       <Drawer
         open={isDrawerOpen}
         variant={smDown ? 'temporary' : 'permanent'}
+        /*
+          temporary: fica por cima do conteúdo sem empurrar os outros.
+          permanent: fica sempre visível, e empurra o conteúdo ao redor.
+        */
         onClose={toggleDrawerOpen}
       >
         <Box
           width={theme.spacing(28)}
+          /*
+          spacing: unidade de medida do mui.(essa função trabalha com multiplos de 8. cada unidade spacing equivale a 4px. então spacing(2) == 8px...)
+          */
           height="100%"
-          display="flex"
+          display="flex" // transforma os filhos em flex com flex direction de row.
           flexDirection="column"
         >
           <Box
             width="100%"
-            height={theme.spacing(20)}
+            height={theme.spacing(20)} // 20*4px == 80px
             display="flex"
-            alignItems="center"
-            justifyContent="center"
+            alignItems="center" // centraliza a imagem
+            justifyContent="center" // centraliza a imagem
           >
             <Avatar
-              sx={{ height: theme.spacing(12), width: theme.spacing(12) }}
-              src="https://yt3.ggpht.com/grfYgQadT8iNg9WPb-jkrKB-9224y_DBDXAOtV4Yt7cyQmtR47J_453uveQOTDsp_dRSH851TMM=s108-c-k-c0x00ffffff-no-rj"
+              sx={{ height: theme.spacing(12), width: theme.spacing(12) }} // trabalha as caracteristicas da imagem como altura, largura...
+              src="/img/imgfotologo.svg"
             />
           </Box>
 
@@ -114,9 +122,16 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
             <List component="nav">
               <ListItemButton onClick={toggleTheme}>
                 <ListItemIcon>
-                  <Icon>dark_mode</Icon>
+                  <Icon
+                  // para colocar um ícone com mui basta abrir e fechar a tag <icon>passando o nome do ícone entre elas</icon>
+                  >
+                    dark_mode
+                  </Icon>
                 </ListItemIcon>
-                <ListItemText primary="Alterar tema" />
+                <ListItemText
+                  primary="Alterar tema"
+                  //texto do botão
+                />
               </ListItemButton>
 
               <ListItemButton onClick={logout}>
@@ -130,7 +145,11 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
         </Box>
       </Drawer>
 
-      <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(28)}>
+      <Box
+        height="100vh" //100% da altura da tela.
+        marginLeft={smDown ? 0 : theme.spacing(28)}
+        // se a largura da tela for menor que 600px == marginLeft ganha 0px, se for maior que 600px ela ganha 28spacing == 28*4px == 112px.
+      >
         {children}
       </Box>
     </>
