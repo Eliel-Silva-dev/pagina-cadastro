@@ -1,15 +1,17 @@
+'use client';
+
 import { useState } from 'react';
 
 import {
   Box,
   Button,
   Card,
-  CardActions,
   CardContent,
   CircularProgress,
   TextField,
   Typography,
 } from '@mui/material';
+//CardActions
 
 import * as yup from 'yup';
 

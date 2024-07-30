@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, useCallback, useContext, useState } from 'react';
 
 interface IDrawerOption {
@@ -20,20 +22,21 @@ export const useDrawerContext = () => {
 };
 
 interface IDrawerProviderProps {
-  children: React.ReactNode;
+  children: React.ReactNode; // componentes filhos do react
 }
 
 export const DrawerProvider: React.FC<IDrawerProviderProps> = ({
   children,
 }: IDrawerProviderProps) => {
   const [drawerOptions, setDrawerOptions] = useState<IDrawerOption[]>([]);
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false); // o menu lateral começa fechado ao carregar a aplicação.
 
   const toggleDrawerOpen = useCallback(() => {
-    setIsDrawerOpen((oldDrawerOpen) => !oldDrawerOpen);
+    // armazena funções
+    setIsDrawerOpen((oldDrawerOpen) => !oldDrawerOpen); // ! nega o valor atual da variável, se o componente estiver fechado então abre e vice versa.
   }, []);
 
-  const handleSetDraweroptions = useCallback(
+  const handleSetDrawerOptions = useCallback(
     (newDrawerOptions: IDrawerOption[]) => {
       setDrawerOptions(newDrawerOptions);
     },
@@ -46,7 +49,7 @@ export const DrawerProvider: React.FC<IDrawerProviderProps> = ({
         isDrawerOpen,
         drawerOptions,
         toggleDrawerOpen,
-        setDrawerOptions: handleSetDraweroptions,
+        setDrawerOptions: handleSetDrawerOptions,
       }}
     >
       {children}

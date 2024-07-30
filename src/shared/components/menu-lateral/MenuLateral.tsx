@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Avatar,
   Divider,
@@ -78,12 +80,12 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
           temporary: fica por cima do conteúdo sem empurrar os outros.
           permanent: fica sempre visível, e empurra o conteúdo ao redor.
         */
-        onClose={toggleDrawerOpen}
+        onClose={toggleDrawerOpen} // evento de fechar disparado ao clicar fora do drawer. quando esse evento é disparado ele invoca o toggleDrawerOpen fechando o drawer.
       >
         <Box
           width={theme.spacing(28)}
           /*
-          spacing: unidade de medida do mui.(essa função trabalha com multiplos de 8. cada unidade spacing equivale a 4px. então spacing(2) == 8px...)
+          spacing: unidade de medida do mui.(essa função trabalha com múltiplos de 8. cada unidade spacing equivale a 4px. então spacing(2) == 8px...)
           */
           height="100%"
           display="flex" // transforma os filhos em flex com flex direction de row.
@@ -97,7 +99,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
             justifyContent="center" // centraliza a imagem
           >
             <Avatar
-              sx={{ height: theme.spacing(12), width: theme.spacing(12) }} // trabalha as caracteristicas da imagem como altura, largura...
+              sx={{ height: theme.spacing(12), width: theme.spacing(12) }} // trabalha as características da imagem como altura, largura...
               src="/img/imgfotologo.svg"
             />
           </Box>
