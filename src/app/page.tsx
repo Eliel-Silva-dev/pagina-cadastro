@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 
 import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 
-import * as CidadesService from '@/shared/services/api/cidades/CidadesService';
-import * as PessoasService from '@/shared/services/api/pessoas/PessoasService';
+import {CidadesService} from '@/shared/services/api';
+import {PessoasService} from '@/shared/services/api';
 import { FerramentasDaListagem } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout';
 
@@ -20,7 +20,8 @@ export default function Home() {
     setIsLoadingCidades(true);
     setIsLoadingPessoas(true);
 
-    CidadesService.getAll(1).then((result) => {
+
+    CidadesService.getAllCidades(1).then((result) => {
       setIsLoadingCidades(false);
 
       if (result instanceof Error) {
@@ -30,7 +31,7 @@ export default function Home() {
       }
     });
 
-    PessoasService.getAll(1).then((result) => {
+    PessoasService.getAllPessoas(1).then((result) => {
       setIsLoadingPessoas(false);
 
       if (result instanceof Error) {
