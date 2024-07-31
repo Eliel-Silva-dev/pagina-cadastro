@@ -15,16 +15,14 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+//import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import {
-  IListagemPessoa,
-  PessoasService,
-} from '../../shared/services/api/pessoas/PessoasService';
-import { FerramentasDaListagem } from '../../shared/components';
-import { LayoutBaseDePagina } from '../../shared/layouts';
-import { useDebounce } from '../../shared/hooks';
-import { Environment } from '../../shared/environment';
+import { PessoasService} from '@/shared/services/api';
+import { IListagemPessoa} from '@/shared/services/api/pessoas/PessoasService';
+import { FerramentasDaListagem } from '@/shared/components';
+import { LayoutBaseDePagina } from '@/shared/layout';
+import { useDebounce } from '@/shared/hooks';
+import { Environment } from '@/shared/environment';
 
 export const ListagemDePessoas: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -47,7 +45,7 @@ export const ListagemDePessoas: React.FC = () => {
     setIsLoading(true);
 
     debounce(() => {
-      PessoasService.getAll(pagina, busca).then((result) => {
+      PessoasService.getAllPessoas(pagina, busca).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
@@ -64,7 +62,7 @@ export const ListagemDePessoas: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      PessoasService.deleteById(id).then((result) => {
+      PessoasService.deletePessoasById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
