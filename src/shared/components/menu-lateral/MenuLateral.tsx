@@ -22,38 +22,34 @@ import {
   useAuthContext,
 } from '@/shared/contexts';
 
-import { Logout, DarkMode } from '@mui/icons-material';
+import { Logout, DarkMode, Home } from '@mui/icons-material';
 
-//import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
-// qual o equivalente do router no next?
-
+import { useRouter } from 'next/router';
 interface IListItemLinkProps {
-  to: string;
-  icon: string;
+  href: string;
   label: string;
+  children: React.ReactNode;
   onClick: (() => void) | undefined;
 }
 
 const ListItemLink: React.FC<IListItemLinkProps> = ({
-  to,
-  icon,
+  href,
   label,
+  children,
   onClick,
 }: IListItemLinkProps) => {
-  const navigate = useNavigate();
+  const router = useRouter();
 
-  const resolvedPath = useResolvedPath(to);
-  const match = useMatch({ path: resolvedPath.pathname, end: false });
+  const isActive = router.pathname === href;
+  console.log(router.pathname, isActive);
 
   const handleClick = () => {
-    navigate(to);
-    onClick?.(); // se não for undefined atribui fuc
+    router.push(href);
+    onClick?.();
   };
   return (
-    <ListItemButton selected={!!match} onClick={handleClick}>
-      <ListItemIcon>
-        <Icon>{icon}</Icon>
-      </ListItemIcon>
+    <ListItemButton selected={!!isActive} onClick={handleClick}>
+      <ListItemIcon>{children}</ListItemIcon>
       <ListItemText primary={label} />
     </ListItemButton>
   );
@@ -110,15 +106,27 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
 
           <Box flex={1}>
             <List component="nav">
-              {drawerOptions.map((drawerOption) => (
-                <ListItemLink
-                  to={drawerOption.path}
-                  key={drawerOption.path}
-                  icon={drawerOption.icon}
-                  label={drawerOption.label}
-                  onClick={smDown ? toggleDrawerOpen : undefined}
-                />
-              ))}
+              <ListItemLink
+                href={'/'}
+                label={'Inicio'}
+                onClick={smDown ? toggleDrawerOpen : undefined}
+              >
+                <Home />
+              </ListItemLink>
+              <ListItemLink
+                href={'/pessoas'}
+                label={'pessoas'}
+                onClick={smDown ? toggleDrawerOpen : undefined}
+              >
+                <Home />
+              </ListItemLink>
+              <ListItemLink
+                href={'/cidades'}
+                label={'cidades'}
+                onClick={smDown ? toggleDrawerOpen : undefined}
+              >
+                <Home />
+              </ListItemLink>
             </List>
           </Box>
 
