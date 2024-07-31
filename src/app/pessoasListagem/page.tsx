@@ -17,14 +17,14 @@ import {
 } from '@mui/material';
 //import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { PessoasService} from '@/shared/services/api';
-import { IListagemPessoa} from '@/shared/services/api/pessoas/PessoasService';
+import { PessoasService } from '@/shared/services/api';
+import { IListagemPessoa } from '@/shared/services/api/pessoas/PessoasService';
 import { FerramentasDaListagem } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout';
 import { useDebounce } from '@/shared/hooks';
 import { Environment } from '@/shared/environment';
 
-export const ListagemDePessoas: React.FC = () => {
+const ListagemDePessoas = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
   const navigate = useNavigate();
@@ -158,3 +158,5 @@ export const ListagemDePessoas: React.FC = () => {
     </LayoutBaseDePagina>
   );
 };
+
+export default ListagemDePessoas;

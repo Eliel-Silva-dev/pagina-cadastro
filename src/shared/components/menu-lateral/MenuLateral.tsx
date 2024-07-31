@@ -23,37 +23,7 @@ import {
 } from '@/shared/contexts';
 
 import { Logout, DarkMode, Home, Link } from '@mui/icons-material';
-
-import { useRouter } from 'next/router';
-interface IListItemLinkProps {
-  href: string;
-  label: string;
-  children: React.ReactNode;
-  onClick: (() => void) | undefined;
-}
-
-const ListItemLink: React.FC<IListItemLinkProps> = ({
-  href,
-  label,
-  children,
-  onClick,
-}: IListItemLinkProps) => {
-  const router = useRouter();
-
-  const isActive = router.pathname === href;
-  console.log(router.pathname, isActive);
-
-  const handleClick = () => {
-    router.push(href);
-    onClick?.();
-  };
-  return (
-    <ListItemButton selected={!!isActive} onClick={handleClick}>
-      <ListItemIcon>{children}</ListItemIcon>
-      <ListItemText primary={label} />
-    </ListItemButton>
-  );
-};
+import ListItemLink from '../listItemLink/ListItemLink';
 
 interface IMenuLateralProps {
   children: React.ReactNode;
@@ -107,7 +77,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
           <Box flex={1}>
             <List component="nav">
               <ListItemLink
-                href={'/home'}
+                href={'/'}
                 label={'Inicio'}
                 onClick={smDown ? toggleDrawerOpen : undefined}
               >

@@ -10,9 +10,9 @@ const lato = Lato({ subsets: ['latin'], weight: ['400', '700', '900'] });
 
 export const metadata: Metadata = {
   title: 'Cadastro | Hydrah Tec',
-  description: '',
-  keywords: '',
-  icons: '',
+  description: 'Pagina de cadastro de pessoas e cidades',
+  keywords: 'cadastro de pessoas, cadastro de cidades',
+  icons: 'img/favicon.svg',
   robots: 'index, follow',
   authors: [{ name: 'Eliel Silva', url: 'https://github.com/Eliel-Silva-dev' }],
 };

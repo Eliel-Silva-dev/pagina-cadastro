@@ -24,7 +24,7 @@ import { LayoutBaseDePagina } from '@/shared/layout';
 import { Environment } from '@/shared/environment';
 //import { useDebounce } from '@/shared/hooks';
 
-export const ListagemDeCidades: React.FC = () => {
+const ListagemDeCidades = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
   const navigate = useNavigate();
@@ -157,3 +157,5 @@ export const ListagemDeCidades: React.FC = () => {
     </LayoutBaseDePagina>
   );
 };
+
+export default ListagemDeCidades;

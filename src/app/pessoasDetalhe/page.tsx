@@ -23,7 +23,7 @@ const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
   nomeCompleto: yup.string().required().min(3),
 });
 
-export const DetalheDePessoas: React.FC = () => {
+const DetalheDePessoas = () => {
   const { formRef, save, saveAndClose, isSavingAndClose } = useVForm();
   const { id = 'nova' } = useParams<'id'>();
   const navigate = useNavigate();
@@ -188,3 +188,5 @@ export const DetalheDePessoas: React.FC = () => {
     </LayoutBaseDePagina>
   );
 };
+
+export default DetalheDePessoas;

@@ -5,7 +5,7 @@ import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
 //import { useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 
-import * as CidadesService from '@/shared/services/api/cidades/CidadesService';
+import { CidadesService } from '@/shared/services/api';
 import { VTextField, VForm, useVForm, IVFormsErros } from '@/shared/forms';
 import { FerramentasDeDetalhe } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout/LayoutBaseDePagina';
@@ -18,7 +18,7 @@ const formValidationSchema: yup.Schema<IFormData> = yup
   .object()
   .shape({ nome: yup.string().required().min(3) });
 
-export const DetalheDeCidades: React.FC = () => {
+const DetalheDeCidades = () => {
   const { formRef, save, saveAndClose, isSavingAndClose } = useVForm();
   const { id = 'nova' } = useParams<'id'>();
   const navigate = useNavigate();
@@ -164,3 +164,5 @@ export const DetalheDeCidades: React.FC = () => {
     </LayoutBaseDePagina>
   );
 };
+
+export default DetalheDeCidades;
