@@ -6,7 +6,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material';
-import { useDrawerContext } from '@/contexts';
+import { useDrawerContext } from '@/shared/contexts';
 import { Box } from '@mui/system';
 
 interface ILayoutBaseDePaginaProps {
@@ -19,7 +19,7 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({
   children,
   titulo,
   barraDeFerramentas,
-}) => {
+}: ILayoutBaseDePaginaProps) => {
   const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
   const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const theme = useTheme();

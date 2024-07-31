@@ -65,7 +65,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
   const theme = useTheme(); //trás todos os dados relacionados ao tema em exclusão.
   const smDown = useMediaQuery(theme.breakpoints.down('sm')); // se a largura for menor q sm(600px) retorna true
 
-  const { isDrawerOpen, drawerOptions, toggleDrawerOpen } = useDrawerContext();
+  const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
   const { toggleTheme } = useAppThemeContext();
   const { logout } = useAuthContext();
 

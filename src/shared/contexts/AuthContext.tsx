@@ -25,7 +25,7 @@ interface IAuthProviderProps {
   children: React.ReactNode;
 }
 
-export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
+export const AuthProvider: React.FC<IAuthProviderProps> = ({ children }: IAuthProviderProps) => {
   const [accessToken, setAccessToken] = useState<string>();
 
   useEffect(() => {
