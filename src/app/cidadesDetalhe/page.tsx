@@ -30,7 +30,7 @@ export const DetalheDeCidades: React.FC = () => {
     if (id !== 'nova') {
       setIsLoading(true);
 
-      CidadesService.getById(Number(id)).then((result) => {
+      CidadesService.getCidadesById(Number(id)).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
@@ -55,7 +55,7 @@ export const DetalheDeCidades: React.FC = () => {
         setIsLoading(true);
 
         if (id === 'nova') {
-          CidadesService.create(dadosValidados).then((result) => {
+          CidadesService.createCidades(dadosValidados).then((result) => {
             setIsLoading(false);
 
             if (result instanceof Error) {
@@ -69,7 +69,7 @@ export const DetalheDeCidades: React.FC = () => {
             }
           });
         } else {
-          CidadesService.updateById(Number(id), {
+          CidadesService.updateCidadeById(Number(id), {
             id: Number(id),
             ...dadosValidados,
           }).then((result) => {
@@ -100,7 +100,7 @@ export const DetalheDeCidades: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      CidadesService.deleteById(id).then((result) => {
+      CidadesService.deleteCidadesById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {

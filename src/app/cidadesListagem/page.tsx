@@ -18,7 +18,7 @@ import {
 //import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { IListagemCidade } from '@/shared/services/api/cidades/CidadesService';
-import * as CidadesService from '@/shared/services/api/cidades/CidadesService';
+import {CidadesService} from '@/shared/services/api';
 import { FerramentasDaListagem } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout';
 import { Environment } from '@/shared/environment';
@@ -45,7 +45,7 @@ export const ListagemDeCidades: React.FC = () => {
     setIsLoading(true);
 
     debounce(() => {
-      CidadesService.getAll(pagina, busca).then((result) => {
+      CidadesService.getAllCidades(pagina, busca).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
@@ -62,7 +62,7 @@ export const ListagemDeCidades: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      CidadesService.deleteById(id).then((result) => {
+      CidadesService.deleteCidadesById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
