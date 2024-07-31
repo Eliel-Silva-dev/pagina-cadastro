@@ -5,8 +5,8 @@ import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
 //import { useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 
-import * as PessoasService from '@/shared/services/api/pessoas/PessoasService';
-import { IVFormsErros, VForm, VTextField, useVForm } from '../../shared/forms';
+import {PessoasService} from '@/shared/services/api';
+import { IVFormsErros, VForm, VTextField, useVForm } from '@/shared/forms';
 import { AutoCompleteCidade } from '@/shared/components';
 import { FerramentasDeDetalhe } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout';
@@ -35,7 +35,7 @@ export const DetalheDePessoas: React.FC = () => {
     if (id !== 'nova') {
       setIsLoading(true);
 
-      PessoasService.getById(Number(id)).then((result) => {
+      PessoasService.getPessoasById(Number(id)).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
@@ -62,7 +62,7 @@ export const DetalheDePessoas: React.FC = () => {
         setIsLoading(true);
 
         if (id === 'nova') {
-          PessoasService.create(dadosValidados).then((result) => {
+          PessoasService.createPessoas(dadosValidados).then((result) => {
             setIsLoading(false);
 
             if (result instanceof Error) {
@@ -76,7 +76,7 @@ export const DetalheDePessoas: React.FC = () => {
             }
           });
         } else {
-          PessoasService.updateById(Number(id), {
+          PessoasService.updatePessoasById(Number(id), {
             id: Number(id),
             ...dadosValidados,
           }).then((result) => {
@@ -107,7 +107,7 @@ export const DetalheDePessoas: React.FC = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar?')) {
-      PessoasService.deleteById(id).then((result) => {
+      PessoasService.deletePessoasById(id).then((result) => {
         if (result instanceof Error) {
           alert(result.message);
         } else {
