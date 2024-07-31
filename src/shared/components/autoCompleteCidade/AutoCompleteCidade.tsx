@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Autocomplete, CircularProgress, TextField } from '@mui/material';
 
-import * as CidadesService from '@/shared/services/api/cidades/CidadesService';
+import { CidadesService } from '@/shared/services/api';
 import { useDebounce } from '@/shared/hooks';
 import { useField } from '@unform/core';
 
@@ -16,7 +16,7 @@ interface IAutoCompleteCidadeProps {
 
 export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({
   isExternalLoading = false,
-}) => {
+}: IAutoCompleteCidadeProps) => {
   const { fieldName, registerField, defaultValue, error, clearError } =
     useField('cidadeId');
   const { debounce } = useDebounce();
@@ -41,7 +41,7 @@ export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({
     setIsLoading(true);
 
     debounce(() => {
-      CidadesService.getAll(1, busca, selectedId?.toString()).then((result) => {
+      CidadesService.getAllCidades(1, busca, selectedId?.toString()).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
