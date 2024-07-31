@@ -3,21 +3,23 @@
     {
       "id": "1",
       "nomeCompleto": "Carlos da Silva",
-      "cidadeId": "1",
+      "cidadeId": "10",
       "emial": "carlos@gmail.com"
     },
     {
-      "id": "1",
-      "nomeCompleto": "Carlos da Silva",
+      "id": "2",
+      "nomeCompleto": "Joana dark",
       "cidadeId": "5",
-      "emial": "carlos@gmail.com"
+      "emial": "joanaD@gmail.com"
     }
   ],
   "cidades": [
-    { "id": "1", "nome": "Campinas" },
-    { "id": "1", "nome": "Vinhedo" }
+    { "id": "10", "nome": "Campinas" },
+    { "id": "5", "nome": "Vinhedo" }
   ],
-  "auth": {
-    "accessToken": "277090"
-  }
+  "auth": [
+    {
+      "accessToken": "277090"
+    }
+  ]
 }

@@ -20,7 +20,6 @@ const ListItemLink = ({
   const router = useRouter();
 
   const isActive = pathName === href;
-  console.log(pathName, isActive);
 
   const handleClick = () => {
     router.push(href);

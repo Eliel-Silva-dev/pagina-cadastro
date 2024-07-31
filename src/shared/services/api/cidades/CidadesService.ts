@@ -28,7 +28,7 @@ const getAllCidades = async (
     if (data) {
       return {
         data: data['data'],
-        totalCount: Number(data['items']),
+        totalCount: Number(data.length),
       };
     }
 

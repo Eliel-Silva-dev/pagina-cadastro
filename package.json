@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mock": "npx json-server -w -p 3333 ./mock/db.json"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.0.13",
