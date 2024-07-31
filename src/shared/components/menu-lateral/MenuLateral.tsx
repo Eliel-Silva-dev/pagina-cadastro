@@ -21,7 +21,8 @@ import {
   useDrawerContext,
   useAuthContext,
 } from '@/shared/contexts';
-import { MdDarkMode, MdLogout } from 'react-icons/md';
+
+import { Logout, DarkMode } from '@mui/icons-material';
 
 //import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 // qual o equivalente do router no next?
@@ -126,9 +127,8 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
               <ListItemButton onClick={toggleTheme}>
                 <ListItemIcon>
                   <Icon>
-                    <MdDarkMode fontSize={'medium'} />
+                    <DarkMode />
                   </Icon>
-
                 </ListItemIcon>
                 <ListItemText
                   primary="Alterar tema"
@@ -139,7 +139,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
               <ListItemButton onClick={logout}>
                 <ListItemIcon>
                   <Icon>
-                    <MdLogout fontSize={'medium'} />
+                    <Logout />
                   </Icon>
                 </ListItemIcon>
                 <ListItemText primary="Sair" />
