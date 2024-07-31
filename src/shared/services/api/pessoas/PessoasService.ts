@@ -19,7 +19,7 @@ type TPessoasComTotalCount = {
   totalCount: number;
 };
 
-const getAll = async (
+const getAllPessoas = async (
   page = 1,
   filter = '',
 ): Promise<TPessoasComTotalCount | Error> => {
@@ -43,7 +43,7 @@ const getAll = async (
     );
   }
 };
-const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
+const getPessoasById = async (id: number): Promise<IDetalhePessoa | Error> => {
   try {
     const { data } = await Api.get(`/pessoas/${id}`);
     if (data) {
@@ -59,7 +59,7 @@ const getById = async (id: number): Promise<IDetalhePessoa | Error> => {
     );
   }
 };
-const create = async (
+const createPessoas = async (
   dados: Omit<IDetalhePessoa, 'id'>,
 ): Promise<number | Error> => {
   try {
@@ -78,7 +78,7 @@ const create = async (
     );
   }
 };
-const updateById = async (
+const updatePessoasById = async (
   id: number,
   dados: IDetalhePessoa,
 ): Promise<void | Error> => {
@@ -91,7 +91,7 @@ const updateById = async (
     );
   }
 };
-const deleteById = async (id: number): Promise<void | Error> => {
+const deletePessoasById = async (id: number): Promise<void | Error> => {
   try {
     await Api.delete(`/pessoas/${id}`);
   } catch (error) {
@@ -102,4 +102,10 @@ const deleteById = async (id: number): Promise<void | Error> => {
   }
 };
 
-export { getAll, getById, create, updateById, deleteById };
+export {
+  getAllPessoas,
+  getPessoasById,
+  createPessoas,
+  updatePessoasById,
+  deletePessoasById,
+};
