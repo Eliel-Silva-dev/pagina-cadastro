@@ -22,7 +22,7 @@ import {
   useAuthContext,
 } from '@/shared/contexts';
 
-import { Logout, DarkMode, Home } from '@mui/icons-material';
+import { Logout, DarkMode, Home, Link } from '@mui/icons-material';
 
 import { useRouter } from 'next/router';
 interface IListItemLinkProps {
@@ -107,25 +107,18 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
           <Box flex={1}>
             <List component="nav">
               <ListItemLink
-                href={'/'}
+                href={'/home'}
                 label={'Inicio'}
                 onClick={smDown ? toggleDrawerOpen : undefined}
               >
                 <Home />
               </ListItemLink>
               <ListItemLink
-                href={'/pessoas'}
-                label={'pessoas'}
+                href={'/teste'}
+                label={'teste redirect'}
                 onClick={smDown ? toggleDrawerOpen : undefined}
               >
-                <Home />
-              </ListItemLink>
-              <ListItemLink
-                href={'/cidades'}
-                label={'cidades'}
-                onClick={smDown ? toggleDrawerOpen : undefined}
-              >
-                <Home />
+                <Link />
               </ListItemLink>
             </List>
           </Box>

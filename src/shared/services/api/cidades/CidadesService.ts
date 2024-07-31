@@ -15,7 +15,7 @@ type TCidadesComTotalCount = {
   totalCount: number;
 };
 
-const getAll = async (
+const getAllCidades = async (
   page = 1,
   filter = '',
   id = '',
@@ -42,7 +42,7 @@ const getAll = async (
   }
 };
 
-const getId = async (id: number): Promise<IDetalheCidade | Error> => {
+const getCidadesById = async (id: number): Promise<IDetalheCidade | Error> => {
   try {
     const { data } = await Api.get(`/cidades/${id}`);
 
@@ -60,7 +60,7 @@ const getId = async (id: number): Promise<IDetalheCidade | Error> => {
   }
 };
 
-const create = async (
+const createCidades = async (
   dados: Omit<IDetalheCidade, 'id'>,
 ): Promise<number | Error> => {
   try {
@@ -80,7 +80,7 @@ const create = async (
   }
 };
 
-const updateById = async (
+const updateCidadeById = async (
   id: number,
   dados: IDetalheCidade,
 ): Promise<void | Error> => {
@@ -95,7 +95,7 @@ const updateById = async (
   }
 };
 
-const deleteById = async (id: number): Promise<void | Error> => {
+const deleteCidadesById = async (id: number): Promise<void | Error> => {
   try {
     await Api.delete(`/cidades/${id}`);
   } catch (error) {
@@ -107,4 +107,10 @@ const deleteById = async (id: number): Promise<void | Error> => {
   }
 };
 
-export { getAll, getId, create, updateById, deleteById };
+export {
+  getAllCidades,
+  getCidadesById,
+  createCidades,
+  updateCidadeById,
+  deleteCidadesById,
+};

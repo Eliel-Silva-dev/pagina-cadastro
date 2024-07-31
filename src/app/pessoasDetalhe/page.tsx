@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
-import { useNavigate, useParams } from 'react-router-dom';
+//import { useNavigate, useParams } from 'react-router-dom';
 import * as yup from 'yup';
 
-import { PessoasService } from '../../shared/services/api/pessoas/PessoasService';
+import * as PessoasService from '@/shared/services/api/pessoas/PessoasService';
 import { IVFormsErros, VForm, VTextField, useVForm } from '../../shared/forms';
-import { AutoCompleteCidade } from './compenents/AutoCompleteCidade';
-import { FerramentasDeDetalhe } from '../../shared/components';
-import { LayoutBaseDePagina } from '../../shared/layouts';
+import { AutoCompleteCidade } from '@/shared/components';
+import { FerramentasDeDetalhe } from '@/shared/components';
+import { LayoutBaseDePagina } from '@/shared/layout';
 
 interface IFormData {
   email: string;

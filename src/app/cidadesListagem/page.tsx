@@ -15,16 +15,14 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+//import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import {
-  IListagemCidade,
-  CidadesService,
-} from '@/shared/services/api/cidades/CidadesService';
+import { IListagemCidade } from '@/shared/services/api/cidades/CidadesService';
+import * as CidadesService from '@/shared/services/api/cidades/CidadesService';
 import { FerramentasDaListagem } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout';
 import { Environment } from '@/shared/environment';
-import { useDebounce } from '@/shared/hooks';
+//import { useDebounce } from '@/shared/hooks';
 
 export const ListagemDeCidades: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
