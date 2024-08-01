@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import {
-  Icon,
   IconButton,
   LinearProgress,
   Pagination,
@@ -97,7 +96,7 @@ const ListagemDeCidades = () => {
       <TableContainer
         component={Paper}
         variant="outlined"
-        sx={{ m:1, width: 'auto' }}
+        sx={{ m: 1, width: 'auto' }}
       >
         <Table>
           <TableHead>
@@ -116,7 +115,7 @@ const ListagemDeCidades = () => {
                       size="small"
                       onClick={() => handleDelete(row.id)}
                     >
-                     <Delete />
+                      <Delete />
                     </IconButton>
                     <IconButton
                       size="small"

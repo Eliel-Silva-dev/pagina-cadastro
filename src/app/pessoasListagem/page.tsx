@@ -2,7 +2,6 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import {
-  Icon,
   IconButton,
   LinearProgress,
   Pagination,
@@ -15,7 +14,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-//import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { PessoasService } from '@/shared/services/api';
 import { IListagemPessoa } from '@/shared/services/api/pessoas/PessoasService';
@@ -23,11 +22,12 @@ import { FerramentasDaListagem } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout';
 import { useDebounce } from '@/shared/hooks';
 import { Environment } from '@/shared/environment';
+import { Delete, Edit } from '@mui/icons-material';
 
 const ListagemDePessoas = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
   const { debounce } = useDebounce();
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   const [rows, setRows] = useState<IListagemPessoa[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +36,12 @@ const ListagemDePessoas = () => {
   const busca = useMemo(() => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
+
+  const mudarTextoBusca = (texto: string, pagina: string) => {
+    const pathName = usePathname();
+    console.log(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
+    navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
+  };
 
   const pagina = useMemo(() => {
     return Number(searchParams.get('pagina') || '1');
@@ -83,10 +89,8 @@ const ListagemDePessoas = () => {
           mostrarInputBusca
           textoDaBusca={busca}
           textoBotaoNovo="Nova"
-          aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
-          aoMudarTextoDeBusca={(texto) =>
-            setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
-          }
+          aoClicarEmNovo={() => navigate.push('/pessoasDetalhe?id=nova')}
+          aoMudarTextoDeBusca={(texto) => mudarTextoBusca(texto, '1')}
         />
       }
     >
@@ -109,13 +113,15 @@ const ListagemDePessoas = () => {
               <TableRow key={row.id}>
                 <TableCell>
                   <IconButton size="small" onClick={() => handleDelete(row.id)}>
-                    <Icon>delete</Icon>
+                    <Delete />
                   </IconButton>
                   <IconButton
                     size="small"
-                    onClick={() => navigate(`/pessoas/detalhe/${row.id}`)}
+                    onClick={() =>
+                      navigate.push(`/pessoasDetalhe?id=${row.id}`)
+                    }
                   >
-                    <Icon>edit</Icon>
+                    <Edit />
                   </IconButton>
                 </TableCell>
                 <TableCell>{row.nomeCompleto}</TableCell>
@@ -143,10 +149,7 @@ const ListagemDePessoas = () => {
                     page={pagina}
                     count={Math.ceil(totalCount / Environment.LIMITE_DE_LINHAS)}
                     onChange={(_, newPage) =>
-                      setSearchParams(
-                        { busca, pagina: newPage.toString() },
-                        { replace: true },
-                      )
+                      mudarTextoBusca(busca, newPage.toString())
                     }
                   />
                 </TableCell>
