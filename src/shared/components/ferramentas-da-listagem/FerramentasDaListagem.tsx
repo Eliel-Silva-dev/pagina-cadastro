@@ -1,6 +1,7 @@
-import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
+import { Box, Button, Paper, TextField, useTheme } from '@mui/material';
 
 import { Environment } from '@/shared/environment';
+import { Add } from '@mui/icons-material';
 
 interface IFerrammentasDaListagemProps {
   textoDaBusca?: string;
@@ -29,7 +30,7 @@ export const FerramentasDaListagem: React.FC<IFerrammentasDaListagemProps> = ({
       paddingX={2}
       display="flex"
       alignContent="center"
-      height={theme.spacing(5)}
+      height={theme.spacing(7)}
       component={Paper}
     >
       {mostrarInputBusca && (
@@ -49,7 +50,7 @@ export const FerramentasDaListagem: React.FC<IFerrammentasDaListagemProps> = ({
             disableElevation
             variant="contained"
             onClick={aoClicarEmNovo}
-            endIcon={<Icon>add</Icon>}
+            endIcon={<Add />}
           >
             {textoBotaoNovo}
           </Button>

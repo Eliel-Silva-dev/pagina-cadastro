@@ -24,7 +24,7 @@ const DetalheDeCidades = () => {
   const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [nome, setnome] = useState('');
+  const [nome, setNome] = useState('');
 
   useEffect(() => {
     if (id !== 'nova') {
@@ -37,7 +37,7 @@ const DetalheDeCidades = () => {
           alert(result.message);
           navigate('/cidades');
         } else {
-          setnome(result.nome);
+          setNome(result.nome);
           formRef.current?.setData(result);
         }
       });
@@ -154,7 +154,7 @@ const DetalheDeCidades = () => {
                   name="nome"
                   label="Nome"
                   disabled={isLoading}
-                  onChange={(e) => setnome(e.target.value)}
+                  onChange={(e) => setNome(e.target.value)}
                 />
               </Grid>
             </Grid>

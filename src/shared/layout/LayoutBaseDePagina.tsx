@@ -8,6 +8,7 @@ import {
 } from '@mui/material';
 import { useDrawerContext } from '@/shared/contexts';
 import { Box } from '@mui/system';
+import { Menu } from '@mui/icons-material';
 
 interface ILayoutBaseDePaginaProps {
   titulo: string;
@@ -37,7 +38,7 @@ export const LayoutBaseDePagina: React.FC<ILayoutBaseDePaginaProps> = ({
       >
         {smDown && (
           <IconButton onClick={toggleDrawerOpen}>
-            <Icon>menu</Icon>
+            <Menu color="primary" />
           </IconButton>
         )}
 

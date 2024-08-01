@@ -22,7 +22,13 @@ import {
   useAuthContext,
 } from '@/shared/contexts';
 
-import { Logout, DarkMode, Home, Link } from '@mui/icons-material';
+import {
+  Logout,
+  DarkMode,
+  Home,
+  LocationCity,
+  People,
+} from '@mui/icons-material';
 import ListItemLink from '../listItemLink/ListItemLink';
 
 interface IMenuLateralProps {
@@ -78,17 +84,24 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({
             <List component="nav">
               <ListItemLink
                 href={'/'}
-                label={'Inicio'}
+                label={'Página inicial'}
                 onClick={smDown ? toggleDrawerOpen : undefined}
               >
                 <Home />
               </ListItemLink>
               <ListItemLink
-                href={'/teste'}
-                label={'teste redirect'}
+                href={'/cidadesListagem'}
+                label={'Cidades'}
                 onClick={smDown ? toggleDrawerOpen : undefined}
               >
-                <Link />
+                <LocationCity />
+              </ListItemLink>
+              <ListItemLink
+                href={'/pessoasListagem'}
+                label={'Pessoas'}
+                onClick={smDown ? toggleDrawerOpen : undefined}
+              >
+                <People />
               </ListItemLink>
             </List>
           </Box>

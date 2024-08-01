@@ -4,9 +4,6 @@
   box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
 :root {
   --primary_color: #dbe4e5;
   --secondary_color: rgb(179, 142, 75);

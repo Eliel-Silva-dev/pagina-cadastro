@@ -1,8 +1,8 @@
+import { Add, ArrowBack, Delete, Save } from '@mui/icons-material';
 import {
   Box,
   Button,
   Divider,
-  Icon,
   Paper,
   Skeleton,
   Theme,
@@ -66,7 +66,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
       paddingX={2}
       display="flex"
       alignItems="center"
-      height={theme.spacing(5)}
+      height={theme.spacing(7)}
       component={Paper}
     >
       {mostrarBotaoSalvar && !mostrarBotaoSalvarCarregando && (
@@ -75,7 +75,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant="contained"
           onClick={aoClicarEmSalvar}
-          startIcon={<Icon>save</Icon>}
+          startIcon={<Save />}
         >
           <Typography
             variant="button"
@@ -99,7 +99,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
             disableElevation
             variant="outlined"
             onClick={aoClicarEmSalvarEFechar}
-            startIcon={<Icon>save</Icon>}
+            startIcon={<Save />}
           >
             <Typography
               variant="button"
@@ -122,7 +122,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant="outlined"
           onClick={aoClicarEmApagar}
-          startIcon={<Icon>delete</Icon>}
+          startIcon={<Delete />}
         >
           <Typography
             variant="button"
@@ -143,7 +143,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant="outlined"
           onClick={aoClicarEmNovo}
-          startIcon={<Icon>add</Icon>}
+          startIcon={<Add />}
         >
           <Typography
             variant="button"
@@ -174,7 +174,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           disableElevation
           variant="outlined"
           onClick={aoClicarEmVoltar}
-          startIcon={<Icon>arrow_back</Icon>}
+          startIcon={<ArrowBack />}
         >
           <Typography
             variant="button"

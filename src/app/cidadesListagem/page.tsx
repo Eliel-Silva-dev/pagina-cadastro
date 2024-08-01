@@ -15,19 +15,20 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material';
-//import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 
 import { IListagemCidade } from '@/shared/services/api/cidades/CidadesService';
-import {CidadesService} from '@/shared/services/api';
+import { CidadesService } from '@/shared/services/api';
 import { FerramentasDaListagem } from '@/shared/components';
 import { LayoutBaseDePagina } from '@/shared/layout';
 import { Environment } from '@/shared/environment';
-//import { useDebounce } from '@/shared/hooks';
+import { useDebounce } from '@/shared/hooks';
+import { Delete, Edit } from '@mui/icons-material';
 
 const ListagemDeCidades = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const searchParams = useSearchParams();
   const { debounce } = useDebounce();
-  const navigate = useNavigate();
+  const navigate = useRouter();
 
   const [rows, setRows] = useState<IListagemCidade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -37,6 +38,11 @@ const ListagemDeCidades = () => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
 
+  const mudarTextoBusca = (texto: string, pagina: string) => {
+    const pathName = usePathname();
+    console.log(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
+    navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
+  };
   const pagina = useMemo(() => {
     return Number(searchParams.get('pagina') || '1');
   }, [searchParams]);
@@ -83,17 +89,15 @@ const ListagemDeCidades = () => {
           mostrarInputBusca
           textoDaBusca={busca}
           textoBotaoNovo="Nova"
-          aoClicarEmNovo={() => navigate('/cidades/detalhe/nova')}
-          aoMudarTextoDeBusca={(texto) =>
-            setSearchParams({ busca: texto, pagina: '1' }, { replace: true })
-          }
+          aoClicarEmNovo={() => navigate.push('/cidadesDetalhe?id=nova')}
+          aoMudarTextoDeBusca={(texto) => mudarTextoBusca(texto, '1')}
         />
       }
     >
       <TableContainer
         component={Paper}
         variant="outlined"
-        sx={{ m: 1, width: 'auto' }}
+        sx={{ m:1, width: 'auto' }}
       >
         <Table>
           <TableHead>
@@ -104,22 +108,28 @@ const ListagemDeCidades = () => {
           </TableHead>
 
           <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell>
-                  <IconButton size="small" onClick={() => handleDelete(row.id)}>
-                    <Icon>delete</Icon>
-                  </IconButton>
-                  <IconButton
-                    size="small"
-                    onClick={() => navigate(`/cidades/detalhe/${row.id}`)}
-                  >
-                    <Icon>edit</Icon>
-                  </IconButton>
-                </TableCell>
-                <TableCell>{row.nome}</TableCell>
-              </TableRow>
-            ))}
+            {rows &&
+              rows.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell>
+                    <IconButton
+                      size="small"
+                      onClick={() => handleDelete(row.id)}
+                    >
+                     <Delete />
+                    </IconButton>
+                    <IconButton
+                      size="small"
+                      onClick={() =>
+                        navigate.push(`/cidadesDetalhe?id=${row.id}`)
+                      }
+                    >
+                      <Edit />
+                    </IconButton>
+                  </TableCell>
+                  <TableCell>{row.nome}</TableCell>
+                </TableRow>
+              ))}
           </TableBody>
 
           {totalCount === 0 && !isLoading && (
@@ -142,10 +152,7 @@ const ListagemDeCidades = () => {
                     page={pagina}
                     count={Math.ceil(totalCount / Environment.LIMITE_DE_LINHAS)}
                     onChange={(_, newPage) =>
-                      setSearchParams(
-                        { busca, pagina: newPage.toString() },
-                        { replace: true },
-                      )
+                      mudarTextoBusca(busca, newPage.toString())
                     }
                   />
                 </TableCell>
