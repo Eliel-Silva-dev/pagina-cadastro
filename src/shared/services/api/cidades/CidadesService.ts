@@ -1,12 +1,12 @@
 import { Api } from '../axios-config';
 
 export interface IListagemCidade {
-  id: number;
+  id: string;
   nome: string;
 }
 
 export interface IDetalheCidade {
-  id: number;
+  id: string;
   nome: string;
 }
 
@@ -42,7 +42,7 @@ const getAllCidades = async (
   }
 };
 
-const getCidadesById = async (id: number): Promise<IDetalheCidade | Error> => {
+const getCidadesById = async (id: string): Promise<IDetalheCidade | Error> => {
   try {
     const { data } = await Api.get(`/cidades/${id}`);
 
@@ -62,7 +62,7 @@ const getCidadesById = async (id: number): Promise<IDetalheCidade | Error> => {
 
 const createCidades = async (
   dados: Omit<IDetalheCidade, 'id'>,
-): Promise<number | Error> => {
+): Promise<string | Error> => {
   try {
     const { data } = await Api.post<IDetalheCidade>('/cidades', dados);
 
@@ -81,11 +81,11 @@ const createCidades = async (
 };
 
 const updateCidadeById = async (
-  id: number,
+  id: string,
   dados: IDetalheCidade,
 ): Promise<void | Error> => {
   try {
-    await Api.put(`/cidade/${id}`, dados);
+    await Api.put(`/cidades/${id}`, dados);
   } catch (error) {
     console.error(error);
 
@@ -95,7 +95,7 @@ const updateCidadeById = async (
   }
 };
 
-const deleteCidadesById = async (id: number): Promise<void | Error> => {
+const deleteCidadesById = async (id: string): Promise<void | Error> => {
   try {
     await Api.delete(`/cidades/${id}`);
   } catch (error) {

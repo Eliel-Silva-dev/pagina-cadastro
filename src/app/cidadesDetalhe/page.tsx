@@ -33,7 +33,7 @@ const DetalheDeCidades = () => {
     if (id !== 'nova') {
       setIsLoading(true);
 
-      CidadesService.getCidadesById(Number(id)).then((result) => {
+      CidadesService.getCidadesById(String(id)).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
@@ -72,8 +72,8 @@ const DetalheDeCidades = () => {
             }
           });
         } else {
-          CidadesService.updateCidadeById(Number(id), {
-            id: Number(id),
+          CidadesService.updateCidadeById(String(id), {
+            id: String(id),
             ...dadosValidados,
           }).then((result) => {
             setIsLoading(false);
@@ -101,7 +101,7 @@ const DetalheDeCidades = () => {
       });
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     if (confirm('Realmente deseja apagar?')) {
       CidadesService.deleteCidadesById(id).then((result) => {
         if (result instanceof Error) {
@@ -126,7 +126,7 @@ const DetalheDeCidades = () => {
           aoClicarEmSalvar={save}
           aoClicarEmSalvarEFechar={saveAndClose}
           aoClicarEmVoltar={() => navigate.push('/cidadesListagem')}
-          aoClicarEmApagar={() => handleDelete(Number(id))}
+          aoClicarEmApagar={() => handleDelete(String(id))}
           aoClicarEmNovo={() => navigate.push('/cidadesDetalhe?id=nova')}
         />
       }

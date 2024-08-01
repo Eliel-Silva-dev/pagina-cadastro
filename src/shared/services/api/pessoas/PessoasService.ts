@@ -1,16 +1,16 @@
 import { Api } from '../axios-config';
 
 export interface IListagemPessoa {
-  id: number;
+  id: string;
   email: string;
-  cidadeId: number;
+  cidadeId: string;
   nomeCompleto: string;
 }
 
 export interface IDetalhePessoa {
-  id: number;
+  id: string;
   email: string;
-  cidadeId: number;
+  cidadeId: string;
   nomeCompleto: string;
 }
 
@@ -29,9 +29,10 @@ const getAllPessoas = async (
     const { data } = await Api.get(urlRelativa);
 
     if (data) {
+      console.log('se tem dados:', data)
       return {
         data: data['data'],
-        totalCount: Number(data['items']),
+        totalCount: Number(data['data'].length),
       };
     }
     return new Error('Erro ao listar registros');
@@ -43,7 +44,7 @@ const getAllPessoas = async (
     );
   }
 };
-const getPessoasById = async (id: number): Promise<IDetalhePessoa | Error> => {
+const getPessoasById = async (id: string): Promise<IDetalhePessoa | Error> => {
   try {
     const { data } = await Api.get(`/pessoas/${id}`);
     if (data) {
@@ -61,7 +62,7 @@ const getPessoasById = async (id: number): Promise<IDetalhePessoa | Error> => {
 };
 const createPessoas = async (
   dados: Omit<IDetalhePessoa, 'id'>,
-): Promise<number | Error> => {
+): Promise<string | Error> => {
   try {
     const { data } = await Api.post<IDetalhePessoa>('/pessoas', dados);
 
@@ -79,7 +80,7 @@ const createPessoas = async (
   }
 };
 const updatePessoasById = async (
-  id: number,
+  id: string,
   dados: IDetalhePessoa,
 ): Promise<void | Error> => {
   try {
@@ -91,7 +92,7 @@ const updatePessoasById = async (
     );
   }
 };
-const deletePessoasById = async (id: number): Promise<void | Error> => {
+const deletePessoasById = async (id: string): Promise<void | Error> => {
   try {
     await Api.delete(`/pessoas/${id}`);
   } catch (error) {

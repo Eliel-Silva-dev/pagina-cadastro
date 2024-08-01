@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import * as yup from 'yup';
 
-import {PessoasService} from '@/shared/services/api';
+import { PessoasService } from '@/shared/services/api';
 import { IVFormsErros, VForm, VTextField, useVForm } from '@/shared/forms';
 import { AutoCompleteCidade } from '@/shared/components';
 import { FerramentasDeDetalhe } from '@/shared/components';
@@ -13,19 +13,20 @@ import { LayoutBaseDePagina } from '@/shared/layout';
 
 interface IFormData {
   email: string;
-  cidadeId: number;
+  cidadeId: string;
   nomeCompleto: string;
 }
 
 const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
   email: yup.string().required().email(),
-  cidadeId: yup.number().required(),
+  cidadeId: yup.string().required(),
   nomeCompleto: yup.string().required().min(3),
 });
 
 const DetalheDePessoas = () => {
   const { formRef, save, saveAndClose, isSavingAndClose } = useVForm();
-  const { id = 'nova' } = useParams();
+  const search = useSearchParams();
+  const id = search.get('id');
   const navigate = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -35,7 +36,7 @@ const DetalheDePessoas = () => {
     if (id !== 'nova') {
       setIsLoading(true);
 
-      PessoasService.getPessoasById(Number(id)).then((result) => {
+      PessoasService.getPessoasById(String(id)).then((result) => {
         setIsLoading(false);
 
         if (result instanceof Error) {
@@ -76,8 +77,8 @@ const DetalheDePessoas = () => {
             }
           });
         } else {
-          PessoasService.updatePessoasById(Number(id), {
-            id: Number(id),
+          PessoasService.updatePessoasById(String(id), {
+            id: String(id),
             ...dadosValidados,
           }).then((result) => {
             setIsLoading(false);
@@ -105,7 +106,7 @@ const DetalheDePessoas = () => {
       });
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: String) => {
     if (confirm('Realmente deseja apagar?')) {
       PessoasService.deletePessoasById(id).then((result) => {
         if (result instanceof Error) {
@@ -130,7 +131,7 @@ const DetalheDePessoas = () => {
           aoClicarEmSalvar={save}
           aoClicarEmSalvarEFechar={saveAndClose}
           aoClicarEmVoltar={() => navigate.push('/pessoasListagem')}
-          aoClicarEmApagar={() => handleDelete(Number(id))}
+          aoClicarEmApagar={() => handleDelete(String(id))}
           aoClicarEmNovo={() => navigate.push('/pessoasDetalhe?id=nova')}
         />
       }
