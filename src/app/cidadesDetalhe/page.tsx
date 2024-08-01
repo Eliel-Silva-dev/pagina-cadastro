@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
-//import { useNavigate, useParams } from 'react-router-dom';
+import { useRouter, useParams } from 'next/navigation';
 import * as yup from 'yup';
 
 import { CidadesService } from '@/shared/services/api';
@@ -20,8 +20,8 @@ const formValidationSchema: yup.Schema<IFormData> = yup
 
 const DetalheDeCidades = () => {
   const { formRef, save, saveAndClose, isSavingAndClose } = useVForm();
-  const { id = 'nova' } = useParams<'id'>();
-  const navigate = useNavigate();
+  const { id = 'nova' } = useParams();
+  const navigate = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
   const [nome, setNome] = useState('');
@@ -35,7 +35,7 @@ const DetalheDeCidades = () => {
 
         if (result instanceof Error) {
           alert(result.message);
-          navigate('/cidades');
+          navigate.push('/cidadesListagem');
         } else {
           setNome(result.nome);
           formRef.current?.setData(result);
@@ -62,9 +62,9 @@ const DetalheDeCidades = () => {
               alert(result.message);
             } else {
               if (isSavingAndClose()) {
-                navigate('/cidades');
+                navigate.push('/cidadesListagem');
               } else {
-                navigate(`/cidades/detalhes/${result}`);
+                navigate.push(`/cidadesDetalhe?id=${result}`);
               }
             }
           });
@@ -79,7 +79,7 @@ const DetalheDeCidades = () => {
               alert(result.message);
             } else {
               if (isSavingAndClose()) {
-                navigate('/cidades');
+                navigate.push('/cidadesListagem');
               }
             }
           });
@@ -105,7 +105,7 @@ const DetalheDeCidades = () => {
           alert(result.message);
         } else {
           alert('Registro apagado com sucesso"');
-          navigate('/cidades');
+          navigate.push('/cidadesListagem');
         }
       });
     }
@@ -122,9 +122,9 @@ const DetalheDeCidades = () => {
           mostrarBotaoApagar={id !== 'nova'}
           aoClicarEmSalvar={save}
           aoClicarEmSalvarEFechar={saveAndClose}
-          aoClicarEmVoltar={() => navigate('/cidades')}
+          aoClicarEmVoltar={() => navigate.push('/cidadesListagem')}
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/cidades/detalhe/nova')}
+          aoClicarEmNovo={() => navigate.push('/cidadesDetalhe?id=nova')}
         />
       }
     >

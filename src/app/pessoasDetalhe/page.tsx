@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
-//import { useNavigate, useParams } from 'react-router-dom';
+import { useRouter, useParams } from 'next/navigation';
 import * as yup from 'yup';
 
 import {PessoasService} from '@/shared/services/api';
@@ -25,8 +25,8 @@ const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
 
 const DetalheDePessoas = () => {
   const { formRef, save, saveAndClose, isSavingAndClose } = useVForm();
-  const { id = 'nova' } = useParams<'id'>();
-  const navigate = useNavigate();
+  const { id = 'nova' } = useParams();
+  const navigate = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
   const [nome, setNome] = useState('');
@@ -40,7 +40,7 @@ const DetalheDePessoas = () => {
 
         if (result instanceof Error) {
           alert(result.message);
-          navigate('/pessoas');
+          navigate.push('/pessoasListagem');
         } else {
           setNome(result.nomeCompleto);
           formRef.current?.setData(result);
@@ -69,9 +69,9 @@ const DetalheDePessoas = () => {
               alert(result.message);
             } else {
               if (isSavingAndClose()) {
-                navigate('/pessoas');
+                navigate.push('/pessoasListagem');
               } else {
-                navigate(`/pessoas/detalhe/${result}`);
+                navigate.push(`/pessoasDetalhe?id=${result}`);
               }
             }
           });
@@ -86,7 +86,7 @@ const DetalheDePessoas = () => {
               alert(result.message);
             } else {
               if (isSavingAndClose()) {
-                navigate('/pessoas');
+                navigate.push('/pessoasListagem');
               }
             }
           });
@@ -112,7 +112,7 @@ const DetalheDePessoas = () => {
           alert(result.message);
         } else {
           alert('Registro apagado com sucesso!');
-          navigate('/pessoas');
+          navigate.push('/pessoasListagem');
         }
       });
     }
@@ -129,9 +129,9 @@ const DetalheDePessoas = () => {
           mostrarBotaoApagar={id !== 'nova'}
           aoClicarEmSalvar={save}
           aoClicarEmSalvarEFechar={saveAndClose}
-          aoClicarEmVoltar={() => navigate('/pessoas')}
+          aoClicarEmVoltar={() => navigate.push('/pessoasListagem')}
           aoClicarEmApagar={() => handleDelete(Number(id))}
-          aoClicarEmNovo={() => navigate('/pessoas/detalhe/nova')}
+          aoClicarEmNovo={() => navigate.push('/pessoasDetalhe?id=nova')}
         />
       }
     >
