@@ -39,7 +39,6 @@ const ListagemDeCidades = () => {
 
   const mudarTextoBusca = (texto: string, pagina: string) => {
     const pathName = usePathname();
-    console.log(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
     navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
   };
   const pagina = useMemo(() => {

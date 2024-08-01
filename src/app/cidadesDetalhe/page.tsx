@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Grid, LinearProgress, Paper, Typography } from '@mui/material';
-import { useRouter, useParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import * as yup from 'yup';
 
 import { CidadesService } from '@/shared/services/api';
@@ -20,13 +20,16 @@ const formValidationSchema: yup.Schema<IFormData> = yup
 
 const DetalheDeCidades = () => {
   const { formRef, save, saveAndClose, isSavingAndClose } = useVForm();
-  const { id = 'nova' } = useParams();
+
+  const search = useSearchParams();
+  const id = search.get('id');
   const navigate = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
   const [nome, setNome] = useState('');
 
   useEffect(() => {
+    console.log(id);
     if (id !== 'nova') {
       setIsLoading(true);
 
