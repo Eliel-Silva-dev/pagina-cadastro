@@ -28,6 +28,7 @@ const ListagemDePessoas = () => {
   const searchParams = useSearchParams();
   const { debounce } = useDebounce();
   const navigate = useRouter();
+  const pathName = usePathname();
 
   const [rows, setRows] = useState<IListagemPessoa[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +39,6 @@ const ListagemDePessoas = () => {
   }, [searchParams]);
 
   const mudarTextoBusca = (texto: string, pagina: string) => {
-    const pathName = usePathname();
     console.log(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
     navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
   };
@@ -66,7 +66,7 @@ const ListagemDePessoas = () => {
     });
   }, [busca, pagina]);
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     if (confirm('Realmente deseja apagar?')) {
       PessoasService.deletePessoasById(id).then((result) => {
         if (result instanceof Error) {

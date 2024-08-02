@@ -28,6 +28,7 @@ const ListagemDeCidades = () => {
   const searchParams = useSearchParams();
   const { debounce } = useDebounce();
   const navigate = useRouter();
+  const pathName = usePathname();
 
   const [rows, setRows] = useState<IListagemCidade[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +39,6 @@ const ListagemDeCidades = () => {
   }, [searchParams]);
 
   const mudarTextoBusca = (texto: string, pagina: string) => {
-    const pathName = usePathname();
     navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
   };
   const pagina = useMemo(() => {

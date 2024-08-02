@@ -106,7 +106,7 @@ const DetalheDePessoas = () => {
       });
   };
 
-  const handleDelete = (id: String) => {
+  const handleDelete = (id: string) => {
     if (confirm('Realmente deseja apagar?')) {
       PessoasService.deletePessoasById(id).then((result) => {
         if (result instanceof Error) {
