@@ -131,7 +131,13 @@ const DetalheDeCidades = () => {
         />
       }
     >
-      <VForm placeholder="formulario" ref={formRef} onSubmit={handleSave}>
+      <VForm
+        placeholder="formulario"
+        ref={formRef}
+        onSubmit={handleSave}
+        onPointerEnterCapture={undefined}
+        onPointerLeaveCapture={undefined}
+      >
         <Box
           margin={1}
           display="flex"

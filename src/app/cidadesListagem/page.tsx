@@ -64,7 +64,7 @@ const ListagemDeCidades = () => {
     });
   }, [busca, pagina]);
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     if (confirm('Realmente deseja apagar?')) {
       CidadesService.deleteCidadesById(id).then((result) => {
         if (result instanceof Error) {

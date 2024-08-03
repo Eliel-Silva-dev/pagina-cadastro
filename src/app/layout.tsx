@@ -5,6 +5,7 @@ import { Lato } from 'next/font/google';
 import './globals.css';
 import { AppThemeProvider, DrawerProvider } from '@/shared/contexts';
 import { MenuLateral } from '@/shared/components';
+import { Suspense } from 'react';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700', '900'] });
 
@@ -27,7 +28,9 @@ export default function RootLayout({
       <body className={lato.className}>
         <AppThemeProvider>
           <DrawerProvider>
-            <MenuLateral>{children}</MenuLateral>
+            <Suspense>
+              <MenuLateral>{children}</MenuLateral>
+            </Suspense>
           </DrawerProvider>
         </AppThemeProvider>
       </body>

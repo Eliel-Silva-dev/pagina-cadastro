@@ -8,7 +8,7 @@ import { useDebounce } from '@/shared/hooks';
 import { useField } from '@unform/core';
 
 type TAutoCompleteOption = {
-  id: number;
+  id: string;
   label: string;
 };
 
@@ -23,7 +23,7 @@ export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({
     useField('cidadeId');
   const { debounce } = useDebounce();
 
-  const [selectedId, setSelectedId] = useState<number | undefined>(
+  const [selectedId, setSelectedId] = useState<string | undefined>(
     defaultValue,
   );
 
@@ -43,22 +43,24 @@ export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({
     setIsLoading(true);
 
     debounce(() => {
-      CidadesService.getAllCidades(1, busca, selectedId?.toString()).then((result) => {
-        setIsLoading(false);
+      CidadesService.getAllCidades(1, busca, selectedId?.toString()).then(
+        (result) => {
+          setIsLoading(false);
 
-        if (result instanceof Error) {
-          // alerr(result.message)
-        } else {
-          console.log(result);
+          if (result instanceof Error) {
+            // alerr(result.message)
+          } else {
+            console.log(result);
 
-          setOpcoes(
-            result.data.map((cidade) => ({
-              id: cidade.id,
-              label: cidade.nome,
-            })),
-          );
-        }
-      });
+            setOpcoes(
+              result.data.map((cidade) => ({
+                id: cidade.id,
+                label: cidade.nome,
+              })),
+            );
+          }
+        },
+      );
     });
   }, [busca, selectedId]);
 
