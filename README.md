@@ -110,4 +110,4 @@ E com as bibliotecas:
 
 Projeto desenvolvido por:
 
-- **[Eliel Pereira](https://github.com/hydrahtec)** - _Desenvolvedor de Software_
+- **[Eliel Silva](https://github.com/Eliel-Silva-dev)** - _Software Developer_
