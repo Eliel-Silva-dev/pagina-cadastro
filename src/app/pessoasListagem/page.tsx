@@ -39,7 +39,6 @@ const ListagemDePessoas = () => {
   }, [searchParams]);
 
   const mudarTextoBusca = (texto: string, pagina: string) => {
-    console.log(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
     navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
   };
 
@@ -109,7 +108,7 @@ const ListagemDePessoas = () => {
           </TableHead>
 
           <TableBody>
-            {rows.map((row) => (
+            {rows && rows.map((row) => (
               <TableRow key={row.id}>
                 <TableCell>
                   <IconButton size="small" onClick={() => handleDelete(row.id)}>

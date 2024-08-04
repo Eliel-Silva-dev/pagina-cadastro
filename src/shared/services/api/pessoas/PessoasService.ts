@@ -29,7 +29,7 @@ const getAllPessoas = async (
     const { data } = await Api.get(urlRelativa);
 
     if (data) {
-      console.log('se tem dados:', data)
+      console.log('se tem dados:', data);
       return {
         data: data['data'],
         totalCount: Number(data['data'].length),
