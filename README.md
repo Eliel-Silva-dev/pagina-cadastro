@@ -66,7 +66,7 @@ E com as bibliotecas:
 - [prettier](https://prettier.io/)
 - [material UI](https://mui.com/material-ui/)
 - [json-server](https://www.npmjs.com/package/json-server)
-- [react-icons](https://react-icons.github.
+- [react-icons](https://react-icons.github)
 
 ## Próximos passos
 
