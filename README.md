@@ -10,7 +10,10 @@ O BackEnd da aplicação ainda não foi totalmente implementado mas esta em anda
 
 ### Lista com as funcionalidades:
 
-- [ ] - Implementação da LGPD;
+- [x] Estrutura de pastas e componentização dos elementos;
+- [x] Criação e implementação dos formulários;
+- [x] Criação e implementação da barra de ferramentas;
+- [x] Manipulação das informações do banco de dados via API;
 
 ## 🔧 Instalação
 
@@ -20,10 +23,10 @@ Depois de clonar o repositório, instale as dependências rodando o seguinte com
 npm install
 ```
 
-ou
+depois rode o comando:
 
 ```
-yarn install
+npm run build
 ```
 
 Então você pode iniciar a aplicação rodando o comando:
@@ -32,41 +35,15 @@ Então você pode iniciar a aplicação rodando o comando:
 npm start
 ```
 
-ou
-
-```
-yarn start
-```
-
 Abra um novo terminal e execute o comando para iniciar o servidor JSON:
 
 ```
-npm
-```
-
-ou
-
-```
-yarn run mock
+npm run mock
 ```
 
 Após os servidores inicializarem:
 
 Acesse: `http://localhost:3000` no browser da sua preferencia.
-
-Insira usuário e senha:
-
-user:
-
-```
-reactapp@teste.com
-```
-
-password:
-
-```
-123456
-```
 
 Teste a aplicação.
 
@@ -93,10 +70,6 @@ E com as bibliotecas:
 
 ## Próximos passos
 
-- [ ] Estrutura de pastas e componentização dos elementos;
-- [ ] Criação e implementação dos formulários;
-- [ ] Criação e implementação da barra de ferramentas;
-- [ ] Manipulação das informações do banco de dados via API;
 - [ ] Busca personalizada e paginação;
 - [ ] Reduzir o número de requisições ao banco de dados para melhorar a performance;
 - [ ] Autenticação de usuário (teste);
@@ -105,6 +78,7 @@ E com as bibliotecas:
 - [ ] Implementar a LGDP;
 - [ ] Implementar o lazyload;
 - [ ] Aplicar tema light/dark;
+- [ ] - Implementação da LGPD;
 
 ## ✒️ Autor
 
