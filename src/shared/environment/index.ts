@@ -14,6 +14,6 @@ export const Environment = {
   /*
     Url base de consulta dos dados dessa aplicação
   */
-  //URL_BASE: 'https://server-cadastros.vercel.app',
-  URL_BASE: 'http://localhost:3333',
+  URL_BASE: 'https://server-cadastros.vercel.app',
+  //URL_BASE: 'http://localhost:3333',
 };

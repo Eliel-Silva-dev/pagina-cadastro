@@ -29,7 +29,6 @@ const DetalheDeCidades = () => {
   const [nome, setNome] = useState('');
 
   useEffect(() => {
-    console.log(id);
     if (id !== 'nova') {
       setIsLoading(true);
 
