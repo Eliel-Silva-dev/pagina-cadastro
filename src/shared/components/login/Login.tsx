@@ -18,8 +18,8 @@ import * as yup from 'yup';
 import { useAuthContext } from '@/shared/contexts';
 
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required().min(5),
+  email: yup.string().email('Insira um email válido').required('O email é obrigatório'),
+  password: yup.string().required('A senha é obrigatória').min(5, 'A senha precisa ter pelo menos 5 caracteres'),
 });
 
 interface ILoginProps {
