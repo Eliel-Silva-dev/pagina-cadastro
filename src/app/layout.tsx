@@ -3,8 +3,12 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 
 import './globals.css';
-import { AppThemeProvider, DrawerProvider } from '@/shared/contexts';
-import { MenuLateral } from '@/shared/components';
+import {
+  AppThemeProvider,
+  DrawerProvider,
+  AuthProvider,
+} from '@/shared/contexts';
+import { Login, MenuLateral } from '@/shared/components';
 import { Suspense } from 'react';
 
 const lato = Lato({ subsets: ['latin'], weight: ['400', '700', '900'] });
@@ -26,13 +30,17 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={lato.className}>
-        <AppThemeProvider>
-          <DrawerProvider>
-            <Suspense>
-              <MenuLateral>{children}</MenuLateral>
-            </Suspense>
-          </DrawerProvider>
-        </AppThemeProvider>
+        <AuthProvider>
+          <AppThemeProvider>
+            <Login>
+              <DrawerProvider>
+                <Suspense>
+                  <MenuLateral>{children}</MenuLateral>
+                </Suspense>
+              </DrawerProvider>
+            </Login>
+          </AppThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   );

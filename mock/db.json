@@ -37,10 +37,8 @@
       "nome": "3 Vias"
     }
   ],
-  "auth": [
-    {
-      "accessToken": "277090",
-      "id": "f203"
-    }
-  ]
+  "auth": {
+    "accessToken": "aaaaaa.bbbbbb.cccccc",
+    "id": "f203"
+  }
 }
