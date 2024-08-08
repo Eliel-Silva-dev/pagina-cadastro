@@ -13,7 +13,9 @@ export const Environment = {
   LISTAGEM_VAZIA: 'Nenhum registro encontrado.',
   /*
     Url base de consulta dos dados dessa aplicação
+    Troque a url base alternando as barras duplas de posição
+
   */
-  URL_BASE: 'https://server-cadastros.vercel.app',
-  //URL_BASE: 'http://localhost:3333',
+  //URL_BASE: 'https://server-cadastros.vercel.app',
+  URL_BASE: 'http://localhost:3333',
 };

@@ -14,6 +14,8 @@ O BackEnd da aplicação ainda não foi totalmente implementado mas esta em anda
 - [x] Criação e implementação dos formulários;
 - [x] Criação e implementação da barra de ferramentas;
 - [x] Manipulação das informações do banco de dados via API;
+- [x] Autenticação de usuário (teste);
+- [x] Aplicar tema light/dark;
 
 ## 🔧 Instalação
 
@@ -23,13 +25,26 @@ Depois de clonar o repositório, instale as dependências rodando o seguinte com
 npm install
 ```
 
-depois rode o comando:
+Modifique o arquivo src/shared/environment/index.ts trocando a URL_BASE por:
+
+```
+http://localhost:3333
+```
+
+Modifique também o arquivo src\shared\services\api\pessoas\PessoasService.ts trocando o retorno de dados da função getAllPessoas() para:
+
+```
+data: data['data'],
+totalCount: Number(data['data'].length),
+```
+
+Depois rode no terminal o comando:
 
 ```
 npm run build
 ```
 
-Então você pode iniciar a aplicação rodando o comando:
+Inicie a aplicação rodando o comando:
 
 ```
 npm start
@@ -72,13 +87,8 @@ E com as bibliotecas:
 
 - [ ] Busca personalizada e paginação;
 - [ ] Reduzir o número de requisições ao banco de dados para melhorar a performance;
-- [ ] Autenticação de usuário (teste);
-- [ ] Autenticação de usuário;
-- [ ] Implementar consumo de api de cidades para listalas de forma dinamica;
 - [ ] Implementar a LGDP;
 - [ ] Implementar o lazyload;
-- [ ] Aplicar tema light/dark;
-- [ ] - Implementação da LGPD;
 
 ## ✒️ Autor
 

@@ -30,8 +30,11 @@ const getAllPessoas = async (
 
     if (data) {
       return {
-        data: data,
-        totalCount: Number(data.length),
+        //troque o retorno de dados alternando as barras duplas de posição
+        //data: data,
+        data: data['data'],
+        //totalCount: Number(data.length),
+        totalCount: Number(data['data'].length),
       };
     }
     return new Error('Erro ao listar registros');
