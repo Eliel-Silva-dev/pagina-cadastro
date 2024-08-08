@@ -71,9 +71,9 @@ export const Login: React.FC<ILoginProps> = ({ children }: ILoginProps) => {
     >
       <Card>
         <CardContent>
-          <Box display="flex" flexDirection="column" gap={2} width={250}>
+          <Box display="flex" flexDirection="column" gap={2} width={400}>
             <Typography variant="h6" align="center">
-              Identifique-se
+              Login
             </Typography>
 
             <TextField
@@ -106,6 +106,7 @@ export const Login: React.FC<ILoginProps> = ({ children }: ILoginProps) => {
           <Box width="100%" display="flex" justifyContent="center">
             <Button
               variant="contained"
+              fullWidth
               disabled={isLoading}
               onClick={handleSubmit}
               endIcon={
@@ -124,18 +125,34 @@ export const Login: React.FC<ILoginProps> = ({ children }: ILoginProps) => {
         </CardContent>
 
         <CardContent>
-          <Box display="flex" flexDirection="column" gap={2} width={250}>
-            <Typography variant="h5" align="center">
-              Banco de dados Offline
+          <Box display="flex" flexDirection="column" gap={2} width={400}>
+            <Typography variant="h6" align="center">
+              Dados de login:
             </Typography>
-            <Typography variant="body1" align="center">
-              Desculpe o transtorno, o BackEnd da aplicação esta em manutenção.
-              Não será possível acessa-la nesse momento.
+            <Typography variant="body1">E-mail: teste@gmail.com</Typography>
+            <Typography variant="body1">Senha: 123456</Typography>
+          </Box>
+        </CardContent>
+        <CardContent>
+          <Box display="flex" flexDirection="column" gap={2} width={400}>
+            <Typography variant="h5" align="center">
+              Banco de dados em manutenção.
+            </Typography>
+            <Typography variant="body1">
+              Desculpe o transtorno, o banco de dados da aplicação esta em
+              manutenção.
+            </Typography>
+            <Typography variant="body1">
+              Algumas funcionalidades podem estar fora do ar nesse momento.
             </Typography>
             <Typography variant="body1" align="center">
               Favor acessar o{' '}
-              <a href="" target="_blank" rel="noreferrer">
-                repositório
+              <a
+                href="https://github.com/Eliel-Silva-dev/pagina-cadastro"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Repositório
               </a>{' '}
               e clonar o projeto
             </Typography>

@@ -95,28 +95,6 @@ export default function Home() {
                 </CardContent>
               </Card>
             </Grid>
-        <CardContent>
-          <Box display="flex"  flexDirection="column" gap={2} width={'100%'}>
-            <Typography variant="h5" align="center">
-              Banco de dados Offline
-            </Typography>
-            <Typography variant="body1" align="center">
-              Desculpe o transtorno, o BackEnd da aplicação esta em manutenção.
-              Não será possivel acessa-la nesse momento.
-            </Typography>
-            <Typography variant="body1" align="center">
-              Favor acessar o{' '}
-              <a
-                href="https://github.com/Eliel-Silva-dev"
-                target="_blank"
-                rel="noreferrer"
-              >
-                repositório
-              </a>{' '}
-              e clonar o projeto
-            </Typography>
-          </Box>
-        </CardContent>
           </Grid>
         </Grid>
       </Box>
