@@ -144,7 +144,7 @@ export const Login: React.FC<ILoginProps> = ({ children }: ILoginProps) => {
             <Typography variant="body1">
               Algumas funcionalidades podem estar fora do ar nesse momento.
             </Typography>
-            <Typography variant="body1" align="center">
+            <Typography variant="body1" align="center" color="inherit">
               Favor acessar o{' '}
               <a
                 href="https://github.com/Eliel-Silva-dev/pagina-cadastro"

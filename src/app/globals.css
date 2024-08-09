@@ -22,9 +22,6 @@ a {
   text-decoration: none;
   color: var(--secondary_color);
 }
-a:hover {
-  color: var(--hover);
-}
 li {
   list-style: none;
 }
