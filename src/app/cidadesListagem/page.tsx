@@ -50,6 +50,7 @@ const ListagemDeCidades = () => {
     setIsLoading(true);
 
     debounce(() => {
+
       CidadesService.getAllCidades(pagina, busca).then((result) => {
         setIsLoading(false);
 
