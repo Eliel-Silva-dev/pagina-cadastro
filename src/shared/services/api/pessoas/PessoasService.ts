@@ -1,3 +1,4 @@
+import { Environment } from '@/shared/environment';
 import { Api } from '../axios-config';
 
 export interface IListagemPessoa {
@@ -24,7 +25,7 @@ const getAllPessoas = async (
   filter = '',
 ): Promise<TPessoasComTotalCount | Error> => {
   try {
-    const urlRelativa = `/pessoas?_page=${page}&nomeCompleto_like=${filter}`;
+    const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
 
     const { data } = await Api.get(urlRelativa);
 
@@ -32,9 +33,9 @@ const getAllPessoas = async (
       return {
         //troque o retorno de dados alternando as barras duplas de posição
         //data: data,
-        data: data['data'],
+        data: data,
         //totalCount: Number(data.length),
-        totalCount: Number(data['data'].length),
+        totalCount: Number(data.length),
       };
     }
     return new Error('Erro ao listar registros');
