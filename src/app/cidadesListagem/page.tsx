@@ -38,12 +38,13 @@ const ListagemDeCidades = () => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
 
-  const mudarTextoBusca = (texto: string, pagina: string) => {
-    navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
-  };
   const pagina = useMemo(() => {
     return Number(searchParams.get('pagina') || '1');
   }, [searchParams]);
+
+  const mudarTextoBusca = (texto: string, pagina: string) => {
+    navigate.push(`${pathName.toString()}?pagina=${pagina}&busca=${texto}`);
+  };
 
   useEffect(() => {
     setIsLoading(true);

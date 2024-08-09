@@ -38,13 +38,13 @@ const ListagemDePessoas = () => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
 
-  const mudarTextoBusca = (texto: string, pagina: string) => {
-    navigate.push(`${pathName.toString()}busca=${texto}&pagina=${pagina}`);
-  };
-
   const pagina = useMemo(() => {
     return Number(searchParams.get('pagina') || '1');
   }, [searchParams]);
+
+  const mudarTextoBusca = (texto: string, pagina: string) => {
+    navigate.push(`${pathName.toString()}?pagina=${pagina}&busca=${texto}`);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -108,25 +108,29 @@ const ListagemDePessoas = () => {
           </TableHead>
 
           <TableBody>
-            {rows && rows.map((row) => (
-              <TableRow key={row.id}>
-                <TableCell>
-                  <IconButton size="small" onClick={() => handleDelete(row.id)}>
-                    <Delete />
-                  </IconButton>
-                  <IconButton
-                    size="small"
-                    onClick={() =>
-                      navigate.push(`/pessoasDetalhe?id=${row.id}`)
-                    }
-                  >
-                    <Edit />
-                  </IconButton>
-                </TableCell>
-                <TableCell>{row.nomeCompleto}</TableCell>
-                <TableCell>{row.email}</TableCell>
-              </TableRow>
-            ))}
+            {rows &&
+              rows.map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell>
+                    <IconButton
+                      size="small"
+                      onClick={() => handleDelete(row.id)}
+                    >
+                      <Delete />
+                    </IconButton>
+                    <IconButton
+                      size="small"
+                      onClick={() =>
+                        navigate.push(`/pessoasDetalhe?id=${row.id}`)
+                      }
+                    >
+                      <Edit />
+                    </IconButton>
+                  </TableCell>
+                  <TableCell>{row.nomeCompleto}</TableCell>
+                  <TableCell>{row.email}</TableCell>
+                </TableRow>
+              ))}
           </TableBody>
 
           {totalCount === 0 && !isLoading && (

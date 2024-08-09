@@ -21,14 +21,17 @@ const getAllCidades = async (
   id = '',
 ): Promise<TCidadesComTotalCount | Error> => {
   try {
-    const urlRelativa = `/cidades?_page${page}&nome_like=${filter}&id_like=${id}`;
+    const urlRelativa = `/cidades?_page=${page}&nome_like=${filter}&id_like=${id}`;
 
     const { data } = await Api.get(urlRelativa);
 
     if (data) {
       return {
-        data: data,
-        totalCount: Number(data.length),
+        //troque o retorno de dados alternando as barras duplas de posição
+        //data: data,
+        data: data['data'],
+        //totalCount: Number(data.length),
+        totalCount: Number(data['data'].length),
       };
     }
 
