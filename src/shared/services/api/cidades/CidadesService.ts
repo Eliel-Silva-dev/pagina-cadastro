@@ -22,18 +22,14 @@ const getAllCidades = async (
   id = '',
 ): Promise<TCidadesComTotalCount | Error> => {
   try {
-    const urlRelativa = `/cidades?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nome_like=${filter}&id_like=${id}`;
+    const urlRelativa = `/cidades?_page=${page}&_per_page=${Environment.LIMITE_DE_LINHAS}&nome_like=${filter}&id_like=${id}`;
 
-    const { data, headers } = await Api.get(urlRelativa);
-    console.log('data cidades: ', data);
-    console.log('headers cidades: ', headers);
+    const { data } = await Api.get(urlRelativa);
+
     if (data) {
       return {
-        //troque o retorno de dados alternando as barras duplas de posição
-        //data: data,
-        data: data,
-        //totalCount: Number(data.length),
-        totalCount: Number(headers['content-encoding']),
+        data: data['data'],
+        totalCount: Number(data['items'] || Environment.LIMITE_DE_LINHAS),
       };
     }
 
