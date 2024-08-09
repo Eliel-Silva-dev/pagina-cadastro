@@ -28,7 +28,6 @@ const getAllPessoas = async (
     const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
 
     const { data, headers } = await Api.get(urlRelativa);
-    console.log(data);
     if (data) {
       return {
         data,

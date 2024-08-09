@@ -48,9 +48,9 @@ export const AutoCompleteCidade: React.FC<IAutoCompleteCidadeProps> = ({
           setIsLoading(false);
 
           if (result instanceof Error) {
-            // alerr(result.message)
+            alert(result.message)
           } else {
-            console.log(result);
+            //console.log(result);
 
             setOpcoes(
               result.data.map((cidade) => ({

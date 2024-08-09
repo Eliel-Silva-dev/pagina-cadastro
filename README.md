@@ -10,6 +10,8 @@ O BackEnd da aplicação ainda não foi totalmente implementado mas esta em anda
 
 ### Lista com as funcionalidades:
 
+- [x] Busca personalizada e paginação;
+- [x] Reduzir o número de requisições ao banco de dados para melhorar a performance;
 - [x] Estrutura de pastas e componentização dos elementos;
 - [x] Criação e implementação dos formulários;
 - [x] Criação e implementação da barra de ferramentas;
@@ -29,13 +31,6 @@ Modifique o arquivo src/shared/environment/index.ts trocando a URL_BASE por:
 
 ```
 http://localhost:3333
-```
-
-Modifique também o arquivo src\shared\services\api\pessoas\PessoasService.ts trocando o retorno de dados da função getAllPessoas() para:
-
-```
-data: data['data'],
-totalCount: Number(data['data'].length),
 ```
 
 Depois rode no terminal o comando:
@@ -85,8 +80,6 @@ E com as bibliotecas:
 
 ## Próximos passos
 
-- [ ] Busca personalizada e paginação;
-- [ ] Reduzir o número de requisições ao banco de dados para melhorar a performance;
 - [ ] Implementar a LGDP;
 - [ ] Implementar o lazyload;
 
