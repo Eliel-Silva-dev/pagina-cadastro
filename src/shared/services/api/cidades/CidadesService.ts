@@ -22,15 +22,16 @@ const getAllCidades = async (
   id = '',
 ): Promise<TCidadesComTotalCount | Error> => {
   try {
-    const urlRelativa = `/cidades?_page=${page}&_per_page=${Environment.LIMITE_DE_LINHAS}&nome_like=${filter}&id_like=${id}`;
-    console.log(urlRelativa);
+    const urlRelativa = `/cidades?_page=${page}&_limit=${Environment.LIMITE_DE_LINHAS}&nome_like=${filter}&id_like=${id}`;
 
-    const { data } = await Api.get(urlRelativa);
+    const { data, headers } = await Api.get(urlRelativa);
 
     if (data) {
       return {
-        data: data['data'],
-        totalCount: Number(data['items'] || Environment.LIMITE_DE_LINHAS),
+        data,
+        totalCount: Number(
+          headers['x-total-count'] || Environment.LIMITE_DE_LINHAS,
+        ),
       };
     }
 
